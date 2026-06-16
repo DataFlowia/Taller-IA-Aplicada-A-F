@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IA Aplicada para Profesionales — DataflowIA & Alliance Française Osorno</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<base target="_blank">
+</head>
+<body>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Roboto',sans-serif;background:#0a0d14;color:#e2e8f0;line-height:1.6}
+:root{--accent:#3b82f6;--accent2:#06b6d4;--gold:#f59e0b;--red:#e11d48;--green:#10b981;--dark1:#0a0d14;--dark2:#111827;--dark3:#1a2235;--dark4:#232f47;--border:#1e3a5f;--text:#e2e8f0;--muted:#94a3b8}
+
+.dash{background:#0a0d14;min-height:100vh;padding:0 0 2.2rem}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#08111f 0%,#12345a 45%,#08111f 100%);padding:3.3rem 1.65rem 2.75rem;text-align:center;border-bottom:1px solid #1e3a5f;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(59,130,246,0.12) 0%,transparent 70%)}
+.logos{display:flex;align-items:center;justify-content:center;gap:2.2rem;flex-wrap:wrap;margin-bottom:1.65rem;position:relative}
+.logo-img{height:62px;width:auto;object-fit:contain;filter:drop-shadow(0 0 9px rgba(59,130,246,0.3));transition:filter .3s}
+.logo-img:hover{filter:drop-shadow(0 0 18px rgba(59,130,246,0.6))}
+.logo-sep{width:1px;height:53px;background:linear-gradient(to bottom,transparent,#1e3a5f,transparent)}
+.hero-badge{display:inline-block;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.4);color:#60a5fa;font-size:12px;letter-spacing:2.2px;text-transform:uppercase;padding:4.4px 15.4px;border-radius:22px;margin-bottom:.88rem}
+.hero h1{font-size:clamp(1.54rem,4.4vw,2.2rem);font-weight:700;color:#fff;margin-bottom:.44rem;letter-spacing:-.55px}
+.hero-sub{color:#94a3b8;font-size:1.045rem;max-width:572px;margin:0 auto}
+.stats-row{display:flex;gap:.88rem;flex-wrap:wrap;justify-content:center;margin-top:1.65rem;position:relative}
+.stat-pill{background:rgba(255,255,255,0.04);border:1px solid #1e3a5f;border-radius:55px;padding:6.6px 19.8px;font-size:.88rem;color:#94a3b8;transition:all .3s;cursor:default}
+.stat-pill strong{color:#60a5fa;margin-right:4.4px}
+.stat-pill:hover{border-color:#3b82f6;background:rgba(59,130,246,0.1);color:#e2e8f0;transform:translateY(-2.2px)}
+
+/* MAIN */
+.main{max-width:1100px;margin:0 auto;padding:1.65rem 1.1rem}
+
+/* SECTION */
+.section{margin-bottom:1.32rem;border:1px solid #1a2a45;border-radius:15.4px;overflow:hidden;background:#111827;transition:box-shadow .3s}
+.section:hover{box-shadow:0 0 0 1px #1e3a5f}
+.sec-header{display:flex;align-items:center;gap:13.2px;padding:1.1rem 1.32rem;cursor:pointer;user-select:none;background:#13203a;transition:background .25s}
+.sec-header:hover{background:#192d50}
+.sec-icon{width:39.6px;height:39.6px;border-radius:8.8px;display:flex;align-items:center;justify-content:center;font-size:17.6px;flex-shrink:0}
+.sec-title{flex:1}
+.sec-title h2{font-size:1.045rem;font-weight:600;color:#e2e8f0;letter-spacing:-.22px}
+.sec-title p{font-size:.825rem;color:#64748b;margin-top:1.1px}
+.sec-arrow{color:#64748b;width:22px;height:22px;flex-shrink:0;transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.sec-arrow polyline{stroke:#64748b}
+.sec-arrow.open{transform:rotate(180deg)}
+.sec-body{display:none;padding:1.32rem}
+.sec-body.open{display:block;animation:slideDown .3s ease}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8.8px)}to{opacity:1;transform:translateY(0)}}
+
+/* MODULE CARD */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(242px,1fr));gap:.88rem}
+.mod-card{background:#1a2235;border:1px solid #1e3a5f;border-radius:13.2px;padding:1.1rem;transition:all .3s;cursor:default}
+.mod-card:hover{transform:translateY(-3.3px);border-color:#3b82f6;box-shadow:0 4.4px 22px rgba(59,130,246,0.15)}
+.mod-num{font-size:.77rem;font-weight:700;letter-spacing:1.65px;text-transform:uppercase;margin-bottom:.55rem;opacity:.7}
+.mod-card h3{font-size:.99rem;font-weight:600;color:#e2e8f0;margin-bottom:.44rem;line-height:1.43}
+.mod-card p{font-size:.858rem;color:#64748b;line-height:1.5}
+.mod-tags{display:flex;flex-wrap:wrap;gap:4.4px;margin-top:.77rem}
+.tag{font-size:.748rem;padding:2.2px 8.8px;border-radius:22px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);color:#60a5fa}
+.tag.g{background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.25);color:#34d399}
+.tag.o{background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.25);color:#fbbf24}
+.tag.r{background:rgba(225,29,72,0.1);border-color:rgba(225,29,72,0.25);color:#f87171}
+
+/* WORKSHOP PILLS */
+.workshop-list{display:flex;flex-direction:column;gap:.66rem}
+.ws-item{display:flex;align-items:center;gap:11px;background:#1a2235;border:1px solid #1e3a5f;border-radius:11px;padding:.77rem 1.1rem;transition:all .3s}
+.ws-item:hover{border-color:#06b6d4;background:#1d2d45;transform:translateX(4.4px)}
+.ws-num{width:30.8px;height:30.8px;border-radius:6.6px;background:rgba(6,182,212,0.15);border:1px solid rgba(6,182,212,0.3);color:#06b6d4;font-size:.825rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ws-text{font-size:.913rem;color:#94a3b8}
+.ws-text strong{color:#e2e8f0;display:block;font-size:.935rem;margin-bottom:1.1px}
+
+/* OUTCOMES */
+.outcome-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(198px,1fr));gap:.66rem}
+.outcome-item{display:flex;align-items:center;gap:8.8px;background:#1a2235;border:1px solid #1e3a5f;border-radius:8.8px;padding:.66rem .99rem;font-size:.88rem;color:#94a3b8;transition:all .3s}
+.outcome-item:hover{border-color:#10b981;color:#e2e8f0;transform:translateY(-2.2px)}
+.outcome-item i{color:#10b981;font-size:15.4px;flex-shrink:0}
+
+/* PAYMENT SECTION */
+.payment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(308px,1fr));gap:1.1rem}
+.pay-card{background:#131f35;border:1px solid #1e3a5f;border-radius:15.4px;padding:1.54rem;transition:all .3s}
+.pay-card:hover{border-color:#3b82f6;box-shadow:0 0 22px rgba(59,130,246,0.1)}
+.pay-card-title{display:flex;align-items:center;gap:8.8px;margin-bottom:1.21rem;padding-bottom:.88rem;border-bottom:1px solid #1e3a5f}
+.pay-card-title i{font-size:19.8px;color:#3b82f6}
+.pay-card-title span{font-size:.99rem;font-weight:600;color:#e2e8f0}
+.field-row{margin-bottom:.88rem}
+.field-label{font-size:.748rem;font-weight:700;letter-spacing:1.32px;text-transform:uppercase;color:#3b82f6;margin-bottom:.33rem}
+.field-val{font-size:.968rem;color:#e2e8f0;font-weight:500}
+.field-sub{font-size:.858rem;color:#64748b}
+.inp{width:100%;background:#0d1829;border:1px solid #1e3a5f;border-radius:8.8px;padding:.66rem .99rem;font-size:.913rem;color:#e2e8f0;font-family:'Roboto',sans-serif;transition:border .25s;outline:none;margin-bottom:.66rem}
+.inp:focus{border-color:#3b82f6;box-shadow:0 0 0 2.2px rgba(59,130,246,0.15)}
+.inp::placeholder{color:#334155}
+textarea.inp{resize:vertical;min-height:88px}
+.btn-send{width:100%;background:linear-gradient(135deg,#2563eb,#1d4ed8);border:none;border-radius:8.8px;padding:.77rem;color:#fff;font-size:.968rem;font-weight:600;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:6.6px}
+.btn-send:hover{background:linear-gradient(135deg,#3b82f6,#2563eb);transform:translateY(-1.1px);box-shadow:0 4.4px 17.6px rgba(37,99,235,0.4)}
+
+/* FOOTER */
+.footer{border-top:1px solid #1a2a45;padding:1.65rem 1.1rem;text-align:center;background:#0a0d14}
+.footer-logos{display:flex;align-items:center;justify-content:center;gap:1.65rem;flex-wrap:wrap;margin-bottom:1.1rem}
+.footer-logo{height:35.2px;width:auto;object-fit:contain;opacity:.7;transition:opacity .3s;filter:grayscale(30%)}
+.footer-logo:hover{opacity:1}
+.footer-links{display:flex;align-items:center;justify-content:center;gap:1.65rem;flex-wrap:wrap;margin-bottom:.66rem}
+.footer-links a{color:#3b82f6;font-size:.902rem;text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:#60a5fa}
+.footer-copy{font-size:.825rem;color:#334155}
+
+/* CERT SECTION */
+.cert-items{display:flex;flex-direction:column;gap:.55rem}
+.cert-item{display:flex;align-items:center;gap:11px;background:#1a2235;border:1px solid #1e3a5f;border-radius:8.8px;padding:.715rem 1.1rem;font-size:.913rem;color:#94a3b8;transition:all .3s}
+.cert-item:hover{border-color:#f59e0b;color:#e2e8f0}
+.cert-item i{color:#f59e0b;font-size:16.5px;flex-shrink:0}
+
+/* DIVIDER */
+.sec-divider{border:none;border-top:1px solid #1a2a45;margin:1.1rem 0}
+
+/* CALENDAR */
+.calendar-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(242px,1fr));gap:.88rem}
+.cal-card{background:#1a2235;border:1px solid #1e3a5f;border-radius:13.2px;padding:1.1rem;transition:all .3s;position:relative;overflow:hidden}
+.cal-card:hover{border-color:#3b82f6;box-shadow:0 4.4px 22px rgba(59,130,246,0.15);transform:translateY(-3.3px)}
+.cal-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3.3px;background:linear-gradient(90deg,#3b82f6,#06b6d4)}
+.cal-num{font-size:.77rem;font-weight:700;letter-spacing:1.65px;text-transform:uppercase;margin-bottom:.44rem;opacity:.7}
+.cal-card h3{font-size:.99rem;font-weight:600;color:#e2e8f0;margin-bottom:.33rem;line-height:1.43}
+.cal-card .cal-date{display:flex;align-items:center;gap:6.6px;font-size:.88rem;color:#60a5fa;font-weight:500;margin-bottom:.22rem}
+.cal-card .cal-time{display:flex;align-items:center;gap:6.6px;font-size:.825rem;color:#94a3b8}
+.cal-card .cal-loc{display:flex;align-items:center;gap:6.6px;font-size:.825rem;color:#64748b;margin-top:.44rem;padding-top:.44rem;border-top:1px solid #1e3a5f}
+
+/* PRICE TAG */
+.price-tag{background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(6,182,212,0.15));border:1px solid rgba(59,130,246,0.3);border-radius:13.2px;padding:1.1rem;text-align:center;margin-bottom:.88rem}
+.price-tag .price-label{font-size:.825rem;color:#94a3b8;text-transform:uppercase;letter-spacing:1.65px;margin-bottom:.22rem}
+.price-tag .price-val{font-size:2.2rem;font-weight:700;color:#fff}
+.price-tag .price-val span{font-size:1.1rem;color:#60a5fa}
+.price-tag .price-desc{font-size:.88rem;color:#64748b;margin-top:.22rem}
+
+/* LOCATION CARD */
+.loc-card{background:#1a2235;border:1px solid #1e3a5f;border-radius:13.2px;padding:1.1rem;display:flex;align-items:center;gap:13.2px;transition:all .3s}
+.loc-card:hover{border-color:#10b981}
+.loc-card i{color:#10b981;font-size:22px;flex-shrink:0}
+.loc-card .loc-text{font-size:.913rem;color:#94a3b8}
+.loc-card .loc-text strong{color:#e2e8f0;display:block;font-size:.99rem;margin-bottom:2.2px}
+
+.hero-card{max-width:1320px;margin:auto;background:rgba(255,255,255,.03);backdrop-filter:blur(8.8px);border:1px solid rgba(96,165,250,.18);border-radius:26.4px;padding:1.65rem;animation:floatIn .9s ease}
+
+
+.logo-img{height:99px!important;transition:all .4s ease}
+.logo-img:hover{transform:scale(1.05)}
+.section,.mod-card,.pay-card,.cal-card{animation:fadeUp .6s ease}
+@keyframes fadeUp{from{opacity:.6;transform:translateY(11px)}to{opacity:1;transform:translateY(0)}}
+@keyframes floatIn{from{opacity:0;transform:translateY(-16.5px)}to{opacity:1;transform:translateY(0)}}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+.hero{padding:2rem 1rem 1.65rem}
+.logos{gap:1.1rem}
+.logo-sep{display:none}
+.logo-img{height:48.4px!important}
+.hero h1{font-size:1.43rem}
+.stat-pill{font-size:.792rem;padding:4.4px 13.2px}
+.main{padding:1.1rem .88rem}
+.pay-card{padding:1.1rem}
+.mod-card{padding:.99rem}
+.sec-header{padding:.88rem 1.1rem}
+.sec-title h2{font-size:.935rem}
+.sec-title p{font-size:.77rem}
+.mod-grid{grid-template-columns:1fr}
+.payment-grid{grid-template-columns:1fr}
+.calendar-grid{grid-template-columns:1fr}
+.price-tag .price-val{font-size:1.76rem}
+}
+
+@media(max-width:480px){
+.hero{padding:1.54rem .88rem 1.32rem}
+.hero h1{font-size:1.21rem}
+.hero-sub{font-size:.935rem}
+.stats-row{gap:.55rem}
+.stat-pill{font-size:.715rem;padding:3.3px 8.8px}
+.mod-card h3{font-size:.935rem}
+.mod-card p{font-size:.792rem}
+.ws-text{font-size:.825rem}
+.ws-text strong{font-size:.858rem}
+.outcome-item{font-size:.825rem}
+.pay-card-title span{font-size:.935rem}
+.field-val{font-size:.88rem}
+.inp{font-size:.858rem;padding:.55rem .77rem}
+.btn-send{font-size:.88rem;padding:.66rem}
+.cal-card h3{font-size:.935rem}
+.cal-card .cal-date,.cal-card .cal-time,.cal-card .cal-loc{font-size:.792rem}
+.price-tag .price-val{font-size:1.54rem}
+}
+</style>
+
+<div class="dash">
+
+<!-- HERO -->
+<div class="hero">
+<div class="hero-card">
+  <div class="logos">
+    <img class="logo-img" src="Logo%20AFO%20oficial.png" alt="Alliance Française Osorno">
+    <div class="logo-sep"></div>
+    <img class="logo-img" src="Data%20Transp-1.png" alt="DataFlow IA">
+  </div>
+  <div class="hero-badge">Programa Certificado</div>
+
+  <h1>IA Aplicada para Profesionales,<br>Emprendedores y Empresas</h1>
+  <p class="hero-sub">Domina la inteligencia artificial generativa y transforma tu trabajo con herramientas reales</p>
+  <div class="stats-row">
+    <div class="stat-pill"><strong>4</strong> Módulos</div>
+    <div class="stat-pill"><strong>8</strong> Sesiones</div>
+    <div class="stat-pill"><strong>4</strong> Masterclasses</div>
+    <div class="stat-pill"><strong>4</strong> Workshops</div>
+    <div class="stat-pill"><strong>1</strong> Proyecto Final</div>
+  </div>
+</div></div>
+
+<div class="main">
+
+  <!-- CALENDARIO DE FECHAS -->
+  <div class="section" id="s0">
+    <div class="sec-header" onclick="toggle('s0')">
+      <div class="sec-icon" style="background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3)"><i class="ti ti-calendar" style="color:#60a5fa;font-size:19.8px" aria-hidden="true"></i></div>
+      <div class="sec-title"><h2>Calendario de Módulos</h2><p>Fechas, horarios y lugar del programa</p></div>
+      <svg class="sec-arrow" id="arr-s0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <polyline points="6 9 12 15 18 9"></polyline>
+</svg>
+    </div>
+    <div class="sec-body" id="body-s0">
+      <div class="calendar-grid">
+        <div class="cal-card">
+          <div class="cal-num" style="color:#60a5fa">Módulo 1</div>
+          <h3>Fundamentos de Inteligencia Artificial y Herramientas Generativas</h3>
+          <div class="cal-date"><i class="ti ti-calendar-event" aria-hidden="true"></i> Martes 08 de julio de 2026</div>
+          <div class="cal-time"><i class="ti ti-clock" aria-hidden="true"></i> 19:30 hrs.</div>
+        </div>
+        <div class="cal-card">
+          <div class="cal-num" style="color:#06b6d4">Módulo 2</div>
+          <h3>El arte de conversar con IA: Prompting inteligente. El día a día con IA.</h3>
+          <div class="cal-date"><i class="ti ti-calendar-event" aria-hidden="true"></i> Martes 15 de julio de 2026</div>
+          <div class="cal-time"><i class="ti ti-clock" aria-hidden="true"></i> 19:30 hrs.</div>
+        </div>
+        <div class="cal-card">
+          <div class="cal-num" style="color:#f59e0b">Módulo 3</div>
+          <h3>Creación de contenido avanzado y multimedia</h3>
+          <div class="cal-date"><i class="ti ti-calendar-event" aria-hidden="true"></i> Martes 22 de julio de 2026</div>
+          <div class="cal-time"><i class="ti ti-clock" aria-hidden="true"></i> 19:30 hrs.</div>
+        </div>
+        <div class="cal-card">
+          <div class="cal-num" style="color:#10b981">Módulo 4</div>
+          <h3>Páginas web, Dashboards y presentaciones con IA</h3>
+          <div class="cal-date"><i class="ti ti-calendar-event" aria-hidden="true"></i> Martes 29 de julio de 2026</div>
+          <div class="cal-time"><i class="ti ti-clock" aria-hidden="true"></i> 19:30 hrs.</div>
+        </div>
+      </div>
+      <hr class="sec-divider">
+      <div class="loc-card">
+        <i class="ti ti-map-pin" aria-hidden="true"></i>
+        <div class="loc-text">
+          <strong>Lugar del evento</strong>
+          Salones Corporación Alianza Francesa — Juan Mackenna 1512, Osorno
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MÓDULOS -->
+  <div class="section" id="s1">
+    <div class="sec-header" onclick="toggle('s1')">
+      <div class="sec-icon" style="background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3)"><i class="ti ti-brain" style="color:#60a5fa;font-size:19.8px" aria-hidden="true"></i></div>
+      <div class="sec-title"><h2>Módulo 1 — Fundamentos de IA y Herramientas Generativas</h2><p>Comprende qué es la IA y cómo usarla en tu trabajo diario</p></div>
+      <svg class="sec-arrow" id="arr-s1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <polyline points="6 9 12 15 18 9"></polyline>
+</svg>
+    </div>
+    <div class="sec-body" id="body-s1">
+      <div class="mod-grid">
+        <div class="mod-card">
+          <div class="mod-num" style="color:#60a5fa">Masterclass 1</div>
+          <h3>Comprendiendo la Revolución de la IA</h3>
+          <p>Historia, IA tradicional vs generativa, Machine Learning, Deep Learning y LLMs</p>
+          <div class="mod-tags"><span class="tag">LLMs</span><span class="tag">Deep Learning</span><span class="tag o">Alucinaciones</span></div>
+        </div>
+        <div class="mod-card">
+          <div class="mod-num" style="color:#34d399">Cómo piensa una IA</div>
+          <h3>Tokens, Contexto y Memoria</h3>
+          <p>Entrenamiento, ventana de contexto, tokens y buenas prácticas de uso responsable</p>
+          <div class="mod-tags"><span class="tag g">Privacidad</span><span class="tag g">Sesgos</span><span class="tag g">Datos</span></div>
+        </div>
+        <div class="mod-card">
+          <div class="mod-num" style="color:#fbbf24">Plataformas</div>
+          <h3>Las principales IAs del mercado</h3>
+          <p>ChatGPT, Gemini, Claude, Copilot, Perplexity y NotebookLM en casos reales</p>
+          <div class="mod-tags"><span class="tag o">ChatGPT</span><span class="tag o">Claude</span><span class="tag o">Gemini</span></div>
+        </div>
+      </div>
+      <hr class="sec-divider">
+      <div class="workshop-list">
+        <div class="ws-item">
+          <div class="ws-num">W1</div>
+          <div class="ws-text"><strong>Workshop 1 — Ejercicios Prácticos</strong>Crear cuentas · Consultas simples · Tareas reales · Primer asistente personal</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MÓDULO 2 -->
+  <div class="section" id="s2">
+    <div class="sec-header" onclick="toggle('s2')">
+      <div class="sec-icon" style="background:rgba(6,182,212,0.15);border:1px solid rgba(6,182,212,0.3)"><i class="ti ti-message-code" style="color:#06b6d4;font-size:19.8px" aria-hidden="true"></i></div>
+      <div class="sec-title"><h2>Módulo 2 — El Arte de Conversar con la IA</h2><p>Ingeniería de Prompts para resultados profesionales</p></div>
+      <svg class="sec-arrow" id="arr-s2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <polyline points="6 9 12 15 18 9"></polyline>
+</svg>
+    </div>
+    <div class="sec-body" id="body-s2">
+      <div class="mod-grid">
+        <div class="mod-card">
+          <div class="mod-num" style="color:#06b6d4">Masterclass 2</div>
+          <h3>De usuario a director de IA</h3>
+          <p>Anatomía del prompt: contexto, rol, objetivo, restricciones y formato de salida</p>
+          <div class="mod-tags"><span class="tag">Contexto</span><span class="tag">Rol</span><span class="tag">Objetivo</span></div>
+        </div>
+        <div class="mod-card">
+          <div class="mod-num" style="color:#34d399">Técnicas Pro</div>
+          <h3>Chain of Thought · Few Shot · Meta Prompting</h3>
+          <p>Prompting estructurado, role prompting y construcción de bibliotecas reutilizables</p>
+          <div class="mod-tags"><span class="tag g">CoT</span><span class="tag g">Few Shot</span><span class="tag g">Meta</span></div>
+        </div>
+        <div class="mod-card">
+          <div class="mod-num" style="color:#fbbf24">Conversaciones iterativas</div>
+          <h3>Refinamiento y feedback inteligente</h3>
+          <p>Corrección progresiva de resultados y construcción de un GPT personalizado</p>
+          <div class="mod-tags"><span class="tag o">Iteración</span><span class="tag o">Feedback</span></div>
+        </div>
+      </div>
+      <hr class="sec-divider">
+      <div class="workshop-list">
+        <div class="ws-item">
+          <div class="ws-num">W2</div>
+          <div class="ws-text"><strong>Workshop 2 — Laboratorio Práctico</strong>Prompts para correos · Informes · Contratos · Ventas · Marketing · Educación · GPT personalizado</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MÓDULO 3 -->
+  <div class="section" id="s3">
+    <div class="sec-header" onclick="toggle('s3')">
+      <div class="sec-icon" style="background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3)"><i class="ti ti-photo-film" style="color:#f59e0b;font-size:19.8px" aria-hidden="true"></i></div>
+      <div class="sec-title"><h2>Módulo 3 — Creación de Contenido Profesional y Multimedia</h2><p>Genera textos, imágenes, audio, video y presentaciones con IA</p></div>
+      <svg class="sec-arrow" id="arr-s3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <polyline points="6 9 12 15 18 9"></polyline>
+</svg>
+    </div>
+    <div class="sec-body" id="body-s3">
+      <div class="mod-grid">
+        <div class="mod-card">
+          <div class="mod-num" style="color:#f59e0b">Texto avanzado</div>
+          <h3>Artículos, blogs, informes y propuestas comerciales</h3>
+          <p>Generación avanzada de contenido escrito con IA para cualquier industria</p>
+          <div class="mod-tags"><span class="tag o">Artículos</span><span class="tag o">Informes</span><span class="tag o">Manuales</span></div>
+        </div>
+        <div class="mod-card">
+          <div class="mod-num" style="color:#60a5fa">Imagen y Video</div>
+          <h3>Creación visual con IA</h3>
+          <p>Imágenes profesionales y videos promocionales usando herramientas de IA generativa</p>
+          <div class="mod-tags"><span class="tag">Imagen</span><span class="tag">Video</span><span class="tag">NotebookLM</span></div>
+        </div>
+        <div class="mod-card">
+          <div class="mod-num" style="color:#34d399">Voz y Presentaciones</div>
+          <h3>Audio y decks ejecutivos automatizados</h3>
+          <p>ElevenLabs para voz y NotebookLM para presentaciones ejecutivas automáticas</p>
+          <div class="mod-tags"><span class="tag g">ElevenLabs</span><span class="tag g">Slides IA</span></div>
+        </div>
+      </div>
+      <hr class="sec-divider">
+      <div class="workshop-list">
+        <div class="ws-item">
+          <div class="ws-num">W3</div>
+          <div class="ws-text"><strong>Workshop 3 — Proyecto Integrador</strong>Artículo · Campaña publicitaria · Imagen profesional · Video promocional · Presentación ejecutiva</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MÓDULO 4 -->
+  <div class="section" id="s4">
+    <div class="sec-header" onclick="toggle('s4')">
+      <div class="sec-icon" style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3)"><i class="ti ti-code" style="color:#10b981;font-size:19.8px" aria-hidden="true"></i></div>
+      <div class="sec-title"><h2>Módulo 4 — Dashboards, Sitios Web y Automatización</h2><p>Crea soluciones digitales reales sin ser programador</p></div>
+      <svg class="sec-arrow" id="arr-s4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <polyline points="6 9 12 15 18 9"></polyline>
+</svg>
+    </div>
+    <div class="sec-body" id="body-s4">
+      <div class="mod-grid">
+        <div class="mod-card">
+          <div class="mod-num" style="color:#10b981">Desarrollo con IA</div>
+          <h3>HTML · CSS · JS · APIs</h3>
+          <p>Conceptos básicos explicados para no programadores, con asistencia de ChatGPT, Claude y Gemini</p>
+          <div class="mod-tags"><span class="tag g">No-code</span><span class="tag g">APIs</span><span class="tag g">Bases de datos</span></div>
+        </div>
+        <div class="mod-card">
+          <div class="mod-num" style="color:#60a5fa">Sitios Web</div>
+          <h3>Landing Page · Corporativa · Catálogo</h3>
+          <p>Creación de sitios web estáticos completos con diseño responsive y formularios</p>
+          <div class="mod-tags"><span class="tag">Landing</span><span class="tag">Responsive</span><span class="tag">Deploy</span></div>
+        </div>
+        <div class="mod-card">
+          <div class="mod-num" style="color:#fbbf24">Dashboards</div>
+          <h3>Ventas · Finanzas · RRHH · Automatización</h3>
+          <p>Google AI Studio, Gemini y HTML Dashboard IA para visualización de indicadores</p>
+          <div class="mod-tags"><span class="tag o">Google AI</span><span class="tag o">Formularios</span><span class="tag o">Email Auto</span></div>
+        </div>
+      </div>
+      <hr class="sec-divider">
+      <div class="workshop-list">
+        <div class="ws-item">
+          <div class="ws-num">W4</div>
+          <div class="ws-text"><strong>Workshop 4 — Proyecto Final por Niveles</strong>Básico: Landing Page · Intermedio: Dashboard · Avanzado: Sitio web completo con IA integrada</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CERTIFICACIÓN -->
+  <div class="section" id="s5">
+    <div class="sec-header" onclick="toggle('s5')">
+      <div class="sec-icon" style="background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3)"><i class="ti ti-award" style="color:#f59e0b;font-size:19.8px" aria-hidden="true"></i></div>
+      <div class="sec-title"><h2>Proyecto de Certificación — Mi Asistente Digital Empresarial</h2><p>Entregables que demuestran tu dominio completo de la IA</p></div>
+      <svg class="sec-arrow" id="arr-s5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <polyline points="6 9 12 15 18 9"></polyline>
+</svg>
+    </div>
+    <div class="sec-body" id="body-s5">
+      <div class="cert-items">
+        <div class="cert-item"><i class="ti ti-check" aria-hidden="true"></i>Un GPT especializado para tu rubro o empresa</div>
+        <div class="cert-item"><i class="ti ti-check" aria-hidden="true"></i>Un dashboard funcional de indicadores</div>
+        <div class="cert-item"><i class="ti ti-check" aria-hidden="true"></i>Una landing page profesional publicada</div>
+        <div class="cert-item"><i class="ti ti-check" aria-hidden="true"></i>Una automatización básica de procesos</div>
+        <div class="cert-item"><i class="ti ti-check" aria-hidden="true"></i>Una presentación ejecutiva del proyecto</div>
+      </div>
+      <hr class="sec-divider">
+      <div class="outcome-grid" style="margin-top:.88rem">
+        <div class="outcome-item"><i class="ti ti-bolt" aria-hidden="true"></i>Comprender cómo funciona la IA</div>
+        <div class="outcome-item"><i class="ti ti-bolt" aria-hidden="true"></i>Usar las principales plataformas</div>
+        <div class="outcome-item"><i class="ti ti-bolt" aria-hidden="true"></i>Diseñar prompts profesionales</div>
+        <div class="outcome-item"><i class="ti ti-bolt" aria-hidden="true"></i>Crear contenido multimedia</div>
+        <div class="outcome-item"><i class="ti ti-bolt" aria-hidden="true"></i>Construir asistentes personalizados</div>
+        <div class="outcome-item"><i class="ti ti-bolt" aria-hidden="true"></i>Desarrollar dashboards</div>
+        <div class="outcome-item"><i class="ti ti-bolt" aria-hidden="true"></i>Crear sitios web estáticos</div>
+        <div class="outcome-item"><i class="ti ti-bolt" aria-hidden="true"></i>Automatizar procesos simples</div>
+        <div class="outcome-item"><i class="ti ti-bolt" aria-hidden="true"></i>Aplicar IA en tu emprendimiento</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGO Y CONTACTO -->
+  <div class="section" id="s6">
+    <div class="sec-header" onclick="toggle('s6')">
+      <div class="sec-icon" style="background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3)"><i class="ti ti-credit-card" style="color:#60a5fa;font-size:19.8px" aria-hidden="true"></i></div>
+      <div class="sec-title"><h2>Inscripción — Datos de Pago y Contacto</h2><p>Transfiere y envíanos tu aviso de pago para reservar tu lugar</p></div>
+      <svg class="sec-arrow" id="arr-s6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <polyline points="6 9 12 15 18 9"></polyline>
+</svg>
+    </div>
+    <div class="sec-body" id="body-s6">
+      <!-- PRICE TAG -->
+      <div class="price-tag">
+        <div class="price-label">Inversión del programa</div>
+        <div class="price-val">$35.000 <span>CLP</span></div>
+        <div class="price-desc">4 módulos completos · 8 sesiones · 4 masterclasses · 4 workshops · 1 proyecto final</div>
+      </div>
+      <div class="payment-grid">
+        <!-- TRANSFERENCIA -->
+        <div class="pay-card">
+          <div class="pay-card-title">
+            <i class="ti ti-building-bank" aria-hidden="true"></i>
+            <span>Datos de Transferencia</span>
+          </div>
+          <div class="field-row">
+            <div class="field-label">Nombre / Razón Social</div>
+            <div class="field-val">DataflowIA Spa</div>
+          </div>
+          <div class="field-row">
+            <div class="field-label">RUT</div>
+            <div class="field-val">78.328.514-2</div>
+          </div>
+          <div class="field-row">
+            <div class="field-label">Banco y Cuenta</div>
+            <div class="field-val">Bancoestado</div>
+            <div class="field-sub">Cuenta Vista: 90 2797 17791</div>
+          </div>
+          <div class="field-row">
+            <div class="field-label">Email de notificación</div>
+            <div class="field-val" style="color:#60a5fa">contacto@dataflowia.com</div>
+          </div>
+        </div>
+        <!-- CONTACTO -->
+        <div class="pay-card">
+          <div class="pay-card-title">
+            <i class="ti ti-send" aria-hidden="true"></i>
+            <span>Contacto Directo</span>
+          </div>
+          <div style="background:#0d1829;border:1px solid #1e3a5f;border-radius:8.8px;padding:.88rem;margin-bottom:.66rem">
+            <div style="font-size:.77rem;color:#3b82f6;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;margin-bottom:.33rem">Contacto directo</div>
+            <div style="font-size:.88rem;color:#e2e8f0;margin-bottom:.22rem"><strong>Rodrigo</strong> — DataflowIA</div>
+            <div style="font-size:.825rem;color:#94a3b8">rodrigo@dataflowia.com</div>
+          </div>
+          <a href="mailto:rodrigo@dataflowia.com?subject=Consulta%20Inscripción%20Programa%20IA&body=Hola%20Rodrigo,%0A%0AMi%20nombre%20es%20:%0ACorreo%20:%0A%0AConsulta%20o%20aviso%20de%20pago:%0A" class="btn-send" style="text-decoration:none">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg> Enviar mensaje a Rodrigo
+          </a>
+          <div style="margin-top:.55rem;text-align:center;font-size:.77rem;color:#64748b">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg> Se abrirá tu cliente de correo con rodrigo@dataflowia.com
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-logos">
+    <img class="footer-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Alliance_fran%C3%A7aise_2012_logo.svg/200px-Alliance_fran%C3%A7aise_2012_logo.svg.png" alt="Alliance Française" onerror="this.style.display='none'">
+    <div style="width:1px;height:30.8px;background:#1e3a5f"></div>
+    <span style="font-size:.935rem;font-weight:700;color:#60a5fa;letter-spacing:1.1px">DATAFLOW IA</span>
+  </div>
+  <div class="footer-links">
+    <a href="https://www.dataflowia.com" target="_blank">www.dataflowia.com</a>
+    <a href="mailto:contacto@dataflowia.com">contacto@dataflowia.com</a>
+  </div>
+  <div class="footer-copy">© 2026 DataflowIA Spa — Todos los derechos reservados</div>
+</div>
+
+</div>
+
+<script>
+function toggle(id){
+  var b=document.getElementById('body-'+id);
+  var a=document.getElementById('arr-'+id);
+  if(!b)return;
+  var open=b.classList.contains('open');
+  b.classList.toggle('open',!open);
+  b.style.display=open?'none':'block';
+  if(a)a.classList.toggle('open',!open);
+}
+function sendMsg(){
+  // El botón ahora redirige directamente a mailto:rodrigo@dataflowia.com
+}
+</script>
+</body>
+</html>
